@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic);
+body {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0px;
+    background-color: rgba(103, 162, 157, 0.523);
+    font-family: 'Ubuntu';
+}
+
+input {
+    background-color: antiquewhite;
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+    font-family: 'Ubuntu';
+}
+#input-wrapper label {
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(247, 235, 232);
+    font-weight: 600;
+    font-size: smaller;
+}
+input[type="number"] {
+    width: 95%;
+    box-sizing: border-box;
+    padding: 0.2rem;
+    margin: 0.1rem;
+}
+input[type="text"], input[type="password"]{
+    display: flex;
+    padding: 0.3rem 0rem;
+    box-sizing: border-box;
+}
+#footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55%;
+    width: 100%;
+}
+button {
+    width: fit-content;
+    margin: auto;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    background-color: rgb(188, 57, 8);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.522);
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+    color: white;
+}
+#show-password {
+    padding: 1rem 2rem;
+}
+#input-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 0.1rem solid;
+    box-sizing: border-box;
+    background-color: rgb(49, 38, 62);
+    padding: 1.2rem;
+    border-radius: 0.4rem;
+    margin: auto;
+    min-height: 450px;
+    max-height: 600px;
+}
+@media only screen and (max-width: 500px) {
+    #input-wrapper {
+        width: 90%;
+        height: 50%;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    #input-wrapper {
+        width: 85%;
+        max-width: 600px;
+        height: 60%;
+        padding: 3rem;
+    }
+    input[type="text"], input[type="password"], input[type="number"]{
+        padding: 1rem;
+    }
+    button[type="button"] {
+        padding: 1.2rem 2.3rem !important;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    #input-wrapper {
+        width: 85%;
+        max-width: 500px;
+        height: 50%;
+        padding: 2rem;
+    }
+}
+.low-ceiling {
+    padding: 0.4rem 0.6rem !important;
+}
+
+.row-flex {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

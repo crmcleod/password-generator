@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <script src="password-generator.js"></script>
+    <link rel="stylesheet" href="./passgen.css">
+</head>
+<body>
+    <form id="input-wrapper">
+        <label>
+            Password length:
+            <input placeholder="Number required" aria-label="total-length-input" type="number" min="0" max="100" id='totallength'/>
+        </label>
+        <label>
+            Numeric digits:
+            <input placeholder="Number required" aria-label="number-of-numeric-password-characters" type="number" min="0" max="100" id='numbers'/>
+        </label>
+        <label>
+            Capital letters:
+            <input placeholder="Number required" aria-label="number-of-capital-english-letters" type="number" min="0" max="100" id='caps'/>
+        </label>
+        <label>
+            Other characters:
+            <input placeholder="Number required" aria-label="number-of-non-alpha-numeric-characters" type="number" min="0" max="100" id='non-an-chars'/>
+        </label>
+        <div id='footer'>
+            <button type="submit" id="button">GENERATE</button>
+            <input disabled aria-label="output-field-with-password" type='password' id='out'/>
+            <span class="row-flex">
+                <button class="low-ceiling" id="show-password" aria-label="show-password" type="button">SHOW PASSWORD</button>
+                <button class="low-ceiling" id="copy-password" aria-label="copy-password" type="button">COPY 📋</button>
+            </span>
+        </div>
+    </form>
+</body>
+</html>
