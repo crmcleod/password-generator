@@ -1,16 +1,17 @@
-const state = {l: 0, x: 0, n: 0, c: 0}
+const state = { l: 0, x: 0, n: 0, c: 0 }
 
+let totalLengthInput, nanC, caps, numberInput;
 document.addEventListener('DOMContentLoaded', () => {
-    const totalLengthInput = document.querySelector('#totallength');
+    totalLengthInput = document.querySelector('#totallength');
     totalLengthInput.addEventListener('change', handleTotalLength);
 
-    const numberInput = document.querySelector('#numbers')
+    numberInput = document.querySelector('#numbers')
     numberInput.addEventListener('change', handleNumbers)
 
-    const nanC = document.querySelector('#non-an-chars')
+    nanC = document.querySelector('#non-an-chars')
     nanC.addEventListener('change', handleNanC)
 
-    const caps = document.querySelector('#caps')
+    caps = document.querySelector('#caps')
     caps.addEventListener('change', handleCaps)
 
     const show = document.querySelector('#show-password')
@@ -60,28 +61,28 @@ const getAlpha = (len, casing, otherChars) => {
     return chars
 }
 
-const generatePassword = (e, l=state.l, n=state.n, x=state.x, c=state.c) => {
+const generatePassword = (e, l = state.l, n = state.n, x = state.x, c = state.c) => {
     e.preventDefault()
     document.querySelector('#out').type = 'password'
-    if(
+    if (
         typeof +l !== 'number' ||
         typeof +n !== 'number' ||
         typeof +x !== 'number' ||
         typeof +c !== 'number'
-    
-    
+
+
     ) {
         alert('Please enter numbers only')
     } else
-    if (l <= 0 || n < 0 || x < 0 || c < 0) {
-        return alert('Looks like you may have failed to enter a password length or you may have used a negative number.')
-    } else
-        if ((n + x + c) > l) {
-            return alert('Requested characters exceed given password length')
-        }
+        if (l <= 0 || n < 0 || x < 0 || c < 0) {
+            return alert('Looks like you may have failed to enter a password length or you may have used a negative number.')
+        } else
+            if ((n + x + c) > l) {
+                return alert('Requested characters exceed given password length')
+            }
     const numbers = getNumbers(n)
     const chars = getChars(x)
-    const lower = getAlpha(l, 'lower', n+x+c)
+    const lower = getAlpha(l, 'lower', n + x + c)
     const upper = getAlpha(c, 'upper')
     const newArray = [...numbers, ...chars, ...upper, ...lower]
 
@@ -91,29 +92,48 @@ const generatePassword = (e, l=state.l, n=state.n, x=state.x, c=state.c) => {
     })
     let curre = checkForReps({ shuff: shuffled.join('').split('') })
     document.querySelector('#out').value = curre.shuff.join('')
-    document.querySelector('#out').size = l+' !important'
+    document.querySelector('#out').size = l + ' !important'
 
 }
 
 const handleTotalLength = (e) => {
-    state.l = +e.target.value
-    console.log(state)
+    if (e.target.value < (state.n + state.x + state.c)) {
+        totalLengthInput.value = state.n+state.x+state.c;
+        alert('Total length must exceed other selected characters')
+    } else {
+        state.l = +e.target.value
+    }
 }
 
 const handleNumbers = (e) => {
-    state.n = +e.target.value
+    if (state.l < (+e.target.value + state.x + state.c)) {
+        numberInput.value = 0;
+        alert('Total length must exceed other selected characters')
+    } else {
+        state.n = +e.target.value
+    }
 }
 
 const handleCaps = (e) => {
-    state.c = +e.target.value
+    if (state.l < (state.n + state.x + +e.target.value)) {
+        caps.value = 0;
+        alert('Total length must exceed other selected characters')
+    } else {
+        state.c = +e.target.value
+    }
 }
 
 const handleNanC = (e) => {
-    state.x = +e.target.value
+    if (state.l < (state.n + +e.target.value + state.c)) {
+        nanC.value = 0
+        alert('Total length must exceed other selected characters')
+    } else {
+        state.x = +e.target.value
+    }
 }
 
 const showPassword = () => {
     document.querySelector('#out').type === 'text' ?
-    (document.querySelector('#out').type = 'password') :
-    (document.querySelector('#out').type = 'text')
+        (document.querySelector('#out').type = 'password') :
+        (document.querySelector('#out').type = 'text')
 }
